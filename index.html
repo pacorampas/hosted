@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Privileged app</title>
+        <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+        <style>
+            * {
+              padding: 0;
+              margin: 0;
+            }
+
+            button {
+              display: block;
+              font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Privileged empty app</h1>
+            <div id="player"></div>
+            <div>
+              Youtube link:
+              <input id="new-video-input" type="text" value="https://www.youtube.com/watch?v=PsuE80zW4w4">
+              <button id="new-video-button">Play</button>
+            </div>
+        </section>
+    </body>
+    
+    <script>
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        width: '640',
+        height: '360',
+        videoId: 'PsuE80zW4w4',
+        playerVars: {
+          'autoplay': 1, 
+          'controls': 0,
+          'autohide': 1,
+          'rel': 0,
+          'showinfo': 0
+        }
+      });
+      Video();
+    }
+
+    var Video = function(){
+
+      var input = document.getElementById('new-video-input');
+      var button = document.getElementById('new-video-button');
+
+      button.addEventListener('click', changeVideo);
+
+      function changeVideo(){
+        var value = input.value;
+        var start = value.indexOf('v=') + 2;
+        var end = value.indexOf('&', start);
+        end = (end === -1) ? value.length : end;
+        var videoId = value.substring(start, end);
+        player.loadVideoById({'videoId': videoId, 'suggestedQuality': 'highres'});
+        fullScreen();
+      }
+
+      function fullScreen(){
+        var player = document.getElementById('player');
+        var requestFullScreen = player.requestFullScreen || player.mozRequestFullScreen || player.webkitRequestFullScreen;
+        if (requestFullScreen) {
+            requestFullScreen.bind(player)();
+        }
+      }
+    }
+    </script>
+
+</html>
