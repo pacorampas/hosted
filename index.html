@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Privileged app</title>
+        <title>Hosted</title>
         <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
         <style>
             * {
@@ -18,7 +18,7 @@
     </head>
     <body>
         <section>
-            <h1>Privileged empty app</h1>
+            <h1>Hosted youFox</h1>
             <div id="player"></div>
             <div>
               Youtube link:
@@ -54,6 +54,7 @@
       button.addEventListener('click', changeVideo);
 
       function changeVideo(){
+        console.log('clicked');
         var value = input.value;
         var start = value.indexOf('v=') + 2;
         var end = value.indexOf('&', start);
@@ -70,6 +71,7 @@
             requestFullScreen.bind(player)();
         }
       }
+      
     }
     </script>
 

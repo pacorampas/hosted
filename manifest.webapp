@@ -10,5 +10,5 @@
     "url": "http://your-homepage-here.org"
   },
   "default_locale": "en",
-  "launch_path": "/index.html"
+  "launch_path": "/hosted/index.html"
 }
