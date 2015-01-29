@@ -9,6 +9,7 @@
     "name": "Your name or organization",
     "url": "http://your-homepage-here.org"
   },
+  "type": "privileged",
   "default_locale": "en",
   "launch_path": "/hosted/index.html"
 }
